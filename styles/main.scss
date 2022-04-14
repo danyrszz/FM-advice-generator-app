@@ -1,0 +1,78 @@
+@use 'colors';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+*{
+    margin:0; padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-color: colors.$dark-blue;
+    font-family: 'Manrope', sans-serif;
+}
+@mixin flex-item-centered {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+@mixin mobile{
+    @media (max-width: 500px) {
+        @content;
+    }
+}
+.wrapper{
+    @include flex-item-centered;
+    min-height: 600px;
+    height: 100%;
+    width: 100%;
+}
+.advice-card{
+    position: relative;
+    @include flex-item-centered;
+    justify-content: space-around;
+    flex-direction: column;
+    background-color: colors.$dark-gray-blue;
+    color: white;
+    width: 30em;
+    min-height: 18em;
+    border-radius: 1em;
+    padding: 1.5em 1.5em 2.5em 1.5em;
+    @include mobile{
+        width: 25em;
+    }
+    .advice-card__title{
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        font-size: smaller;
+        color: colors.$neon-green;
+    }
+}
+.advice-card__quote{
+    text-align: center;
+    width: 100%;
+    height: 50%;
+    font-size: 28px;
+    color: colors.$light-cyan;
+    @include mobile{
+        font-size: 20px
+    }
+}
+.advice-card__button{
+    position: absolute;
+    bottom:-2.5em;
+    border: none;
+    background-color: colors.$neon-green;
+    padding: 1.5em;
+    border-radius: 50%;
+    transition: 0.2s ease-in-out;
+    &:hover{
+        box-shadow: 0 0 40px colors.$neon-green;
+        transform: rotate(360deg);
+        cursor: pointer;
+    }
+    @include mobile{
+        padding: 1em;
+    }
+}
+.advice-card__separator{
+    width: 90%;
+}
